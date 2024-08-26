@@ -39,7 +39,17 @@ router.post('/signup',async(c)=>{
                 msg:"invalid input"
             })
         }
-        const hash=await bcrypt.hash(inputBody.data.password,10)
+        const existingUser=await prisma.user.findMany({
+            where:{
+                email:inputBody.data.email
+            }
+        })
+        if(existingUser){
+            return c.json({
+                msg:"Error! creating user"
+            })
+        }
+        const hash=await bcrypt.hash(inputBody.data.password,10);
         const user=await prisma.user.create({
             data:{
                 email:inputBody.data.email,
@@ -47,27 +57,25 @@ router.post('/signup',async(c)=>{
                 name:inputBody.data.name
             }
         })
-        if(!user){
-            return c.json({
-                msg:"Error! creating user"
-            })
-        }
         const payLoad={
             id: user.id
         }
+
         const token=await sign(payLoad,c.env.JWT_SECRET)
         setCookie(c,'jwtToken',token, { 
             path: '/', 
             expires: new Date(Date.now() + 900000), 
             httpOnly: true 
           })
-       console.log(hash)
+       
         return c.json({
             msg:"user created sucessfull"
         })
     }
     catch{
-        return c.status(200)
+        return c.json({
+            msg:"Internal Error!"
+        })
     }
 })
 
