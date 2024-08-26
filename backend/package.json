@@ -7,11 +7,19 @@
   "dependencies": {
     "@prisma/client": "^5.18.0",
     "@prisma/extension-accelerate": "^1.1.0",
+    "@sahani_indrajit/blognpmpacakge": "^1.0.3",
+    "@sahani_indrajit/hashingpasssword": "^1.0.0",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
     "hono": "^4.5.8",
     "prisma": "^5.18.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240529.0",
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.7",
     "wrangler": "^3.57.2"
   }
 }
