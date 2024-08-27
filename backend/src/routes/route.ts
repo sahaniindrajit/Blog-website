@@ -3,6 +3,7 @@ import signupRouter from './signup'
 import signinRouter from './signin'
 import auth from './auth'
 import blogPostRouter from './blogPost'
+import blogUpdateRouter from './blogUpdate'
 
 const router = new Hono<{Variables : {
     userId: string
@@ -14,6 +15,7 @@ router.route('/signin',signinRouter)
 router.use('/blog/*',auth)
 
 router.route('/blog',blogPostRouter)
+router.route('/blog',blogUpdateRouter)
 
 
 
