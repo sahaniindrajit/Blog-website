@@ -70,10 +70,12 @@ signinRouter.post('/',async(c)=>{
         
 
     }
-    catch{
+    catch(e:any){
+       
         return c.json({
-            msg:"Internal Error!"
-        })
+            msg: "Internal server error!",
+            error: e.message || "Unknown error"
+        });
     }
 })
 

@@ -68,10 +68,11 @@ signupRouter.post('/',async(c)=>{
             msg:"user created sucessfull"
         })
     }
-    catch{
+    catch(e:any){
         return c.json({
-            msg:"Internal Error!"
-        })
+            msg: "Internal server error!",
+            error: e.message || "Unknown error"
+        });
     }
 })
 
