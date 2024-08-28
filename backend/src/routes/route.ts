@@ -6,6 +6,7 @@ import blogPostRouter from './blogPost'
 import blogUpdateRouter from './blogUpdate'
 import getBlogBytIdRouter from './getBlogById'
 import logoutRouter from './logoutRouter'
+import deleteBlogRoute from './deleteBlog'
 
 const router = new Hono<{Variables : {
     userId: string
@@ -20,6 +21,7 @@ router.use('/blog/*',auth)
 router.route('/blog',blogPostRouter)
 router.route('/blog',blogUpdateRouter)
 router.route('/blog',getBlogBytIdRouter)
+router.route('/blog/delete/:id',deleteBlogRoute)
 
 
 
