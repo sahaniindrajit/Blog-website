@@ -4,6 +4,7 @@ import signinRouter from './signin'
 import auth from './auth'
 import blogPostRouter from './blogPost'
 import blogUpdateRouter from './blogUpdate'
+import getBlogBytIdRouter from './getBlogById'
 
 const router = new Hono<{Variables : {
     userId: string
@@ -16,18 +17,8 @@ router.use('/blog/*',auth)
 
 router.route('/blog',blogPostRouter)
 router.route('/blog',blogUpdateRouter)
+router.route('/blog',getBlogBytIdRouter)
 
-
-
-router.put('/blog',(c)=>{
-    return c.text('ki')
-})
-
-router.get('/blog/:id?',(c)=>{
-    console.log(c.get('userId'));
-    const id=c.req.param('id')
-    return c.text('joi')
-})
 
 
 export default router
