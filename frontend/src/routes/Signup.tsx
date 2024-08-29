@@ -9,7 +9,7 @@ export default function Signup() {
     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-[#0c0c0c] to-secondary">
       <Card className="w-full max-w-md p-6 sm:p-8">
         <CardHeader>
-          <CardTitle className="text-3xl font-bold">Sign Up</CardTitle>
+          <CardTitle className="text-3xl font-bold">Signup</CardTitle>
           <CardDescription>Create your account to start blogging.</CardDescription>
         </CardHeader>
         <CardContent>
