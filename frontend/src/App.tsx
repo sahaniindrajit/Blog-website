@@ -3,7 +3,7 @@ import './App.css'
 import Home from './routes/Home'
 import Signup from './routes/Signup'
 import Signin from './routes/Signin'
-import Blog from './routes/blog'
+import Blog from './routes/Blog'
 
 function App() {
  
