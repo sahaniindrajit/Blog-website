@@ -36,24 +36,29 @@ export default function Signin() {
         </CardContent>
         <CardFooter>
           <Button type="submit" className="w-full" onClick={async () => {
-                            try {
-                              await axios.post(`${API_BASE_URL}/signin`, {
-                                  email,
-                                  password
-                              }, {
-                                  headers: {
-                                      'Content-Type': 'application/json',
-                                  },
-                                  withCredentials: true,
-                              })
-                              navigate('/blog')
-                            }
-                            catch (e) {
-                              alert(e);
-                              navigate('/failed')
+              try {
+                
+                await axios.post(`${API_BASE_URL}/signin`, {
+                  email,
+                  password
+                    
+                }, 
+                {
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  withCredentials: true,
+                })
 
-                            }
-                        }}>
+                navigate('/blog')
+                
+              }
+              catch (e) {
+                alert(e);
+                navigate('/failed')
+
+              }
+            }}>
             Sign Up
           </Button>
         </CardFooter>
