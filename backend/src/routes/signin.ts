@@ -31,7 +31,7 @@ signinRouter.post('/',async(c)=>{
         if(!inputBody.success){
             return c.json({
                 msg:"invalid input"
-            })
+            },411)
         }
         const hashPassword=inputBody.data.password;
 
@@ -43,13 +43,13 @@ signinRouter.post('/',async(c)=>{
         if(!existingUser){
             return c.json({
                 msg:"User does't exist"
-            })
+            },400)
         }
         const unHashedPassword=await bcrypt.compare(hashPassword, existingUser.password);
         if(!unHashedPassword){
             return c.json({
                 msg:"Password is incorrect!"
-            })
+            },400)
         }
 
         const payLoad={
@@ -75,7 +75,7 @@ signinRouter.post('/',async(c)=>{
         return c.json({
             msg: "Internal server error!",
             error: e.message || "Unknown error"
-        });
+        },500);
     }
 })
 

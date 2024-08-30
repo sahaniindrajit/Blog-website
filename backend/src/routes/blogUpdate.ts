@@ -25,7 +25,7 @@ blogUpdateRouter.put('/',async (c)=>{
         if(!inputBody.success){
             return c.json({
                 msg:"invalid input"
-            })
+            },400)
         }
         const userID=c.get('userId')
 
@@ -42,7 +42,7 @@ blogUpdateRouter.put('/',async (c)=>{
         if(!updatedBlog){
             return c.json({
                 msg:"Error! Updating the blog || Wrong user or post id"
-            })
+            },400)
         }
         return c.json({
             msg:"Blog updated successfully",

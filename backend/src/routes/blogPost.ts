@@ -25,7 +25,7 @@ blogPostRouter.post('/',async (c)=>{
         if(!inputBody.success){
             return c.json({
                 msg:"invalid input"
-            })
+            },411)
         }
         const userID=c.get('userId')
         const post = await prisma.blog.create({
@@ -44,7 +44,7 @@ blogPostRouter.post('/',async (c)=>{
         return c.json({
             msg: "Internal server error!",
             error: e.message || "Unknown error"
-        });
+        },500);
     }
 
     

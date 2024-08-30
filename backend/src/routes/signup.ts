@@ -31,7 +31,7 @@ signupRouter.post('/',async(c)=>{
         if(!inputBody.success){
             return c.json({
                 msg:"invalid input"
-            })
+            },411)
         }
         const existingUser=await prisma.user.findUnique({
             where:{
@@ -42,7 +42,7 @@ signupRouter.post('/',async(c)=>{
         if(existingUser){
             return c.json({
                 msg:"User already exist"
-            })
+            },400)
         }
         
         const hash=await bcrypt.hash(inputBody.data.password,10);
@@ -72,7 +72,7 @@ signupRouter.post('/',async(c)=>{
         return c.json({
             msg: "Internal server error!",
             error: e.message || "Unknown error"
-        });
+        },500);
     }
 })
 
