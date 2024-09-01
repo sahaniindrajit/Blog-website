@@ -32,7 +32,7 @@ function BlogCard({authername,title,content,publishedDate}:BlogCardProps) {
         </div>
 
         <div className="text-md font-thin">
-            {content.slice(0,300)+"...."}
+            {content.slice(0,210)+"...."}
         </div>
 
         <div className="text-slate-400 text-md font-thin">
@@ -53,4 +53,4 @@ function UserAvatar({name}:{name:string}){
     )
 }
 
-export default BlogCard
+export {BlogCard,UserAvatar}
